@@ -1,0 +1,67 @@
+{% extends 'ecommerce/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container" style="margin-bottom: 30px;">
+    <img id="main-image" src="{{product.imageURL}}" alt="welcome to the Bakerspoint store"  style="display: block; margin-left: auto; margin-right: auto; border-radius: 10px; max-height: 450px; max-width: 100%;">
+    <div style="display: flex; justify-content: center;">
+        <div style="display: flex; flex-direction: row; flex-wrap: wrap;  margin-top: 40px;">
+        <img src="{{product.other_image_1.url}}" alt="product-image" style="max-height: 70px; max-width: 100%; margin-right: auto;padding: 10px;" onclick="image1()"  id="image-1">
+        <img src="{{product.other_image_2.url}}" alt="product-image" style="max-height: 70px; max-width: 100%; margin-right: auto; padding: 10px;" onclick="image2()" id="image-2">
+        <img src="{{product.other_image_3.url}}" alt="product-image" style="max-height: 70px; max-width: 100%; margin-right: auto; padding: 10px;" onclick="image3()" id="image-3">
+        </div>
+    </div>
+</div>
+<hr>
+<div class="container" style="margin-bottom: 20px;">
+    <h3>{{product.name}}</h3>
+    <p>milk butter chin-chin, if you have ever wanted the perfect chin-chin for family or friends then you have te right product here</p>
+    <h5>Ingredients</h5>
+    <li>flour</li>
+    <li>milk</li>
+    <li>butter</li>
+    <li>water</li>
+</div>
+
+<div class="container" style="display: flex; flex-direction: row;">
+    <div style="padding-left: 5px; padding-right: 5px; border-radius: 5px; font-family: roboto; font-size: x-large; margin-right: 30px;"> Quantity </div>
+    <div style="border: solid #FFCB7D 1px; color: rgb(71, 71, 71); padding: 3px; padding-left: 10px; padding-right: 10px;">&#8722;</div>
+    
+    <div style="border: solid #FFCB7D 1px; color: rgb(15, 15, 15); padding: 3px; padding-left: 15px; padding-right: 15px; font-size: large; font-weight: 700;">{{items.quantity}}</div>
+    
+    <div style="border: solid #FFCB7D 1px; color: rgb(15, 15, 15); padding: 3px; padding-left: 10px; padding-right: 10px;">&#43;</div>
+</div>
+
+    <hr>
+<div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 50px; text-align: center; height: 30px;">
+    <div class="button-light"><p>Add to cart</p></div>
+    <div class="button-dark"><a href="{% url 'ecommerce:cart-page' %}" style="color: #FFCB7D;"><p>Buy Now</p></a></div>
+</div>
+
+<div class="container">
+    <p>other products you may like</p>
+</div>
+<script>
+       
+    var image_1 = document.getElementById('image-1').src
+    var image_2 = document.getElementById('image-2').src
+    var image_3 = document.getElementById('image-3').src
+
+
+    var main_image = document.getElementById('main-image')
+
+    function image1(){
+    main_image.src = image_1
+    }
+
+    function image2(){
+    main_image.src = image_2
+    }
+
+    function image3(){
+    main_image.src = image_3
+    }
+
+</script>
+
+{% endblock %}

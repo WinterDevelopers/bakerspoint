@@ -1,0 +1,259 @@
+{% extends 'ecommerce/base.html' %}
+{% load static %}
+
+{% block content %}
+ 
+<div class="row">
+
+    <div class="col-lg-6">
+        <div class="container">
+            <div class="order-summary" style="min-height: 525px;">
+                <h4>Order Summary</h4>
+                <div style="align-self: center; height: 2px; width:53%; background-color: #fffcf7; position: relative; top: -10px; margin: 10px 3px; border-radius: 10px;"></div>
+                <div style="display: flex; flex-direction: column; justify-content: space-between;" class="order summary">
+                    <div>Total Quantity: {{order.get_cart_item}}</div>
+                    <div><h5 id="amout">{{order.get_cart_total}}</h5></div>
+                </div>
+                    <div class="cart-item">
+                        <div style="padding-right: 30px;"></div>
+                        <div>product</div>
+                        <div>Qty</div>
+                        <div>price</div>
+                    </div>
+                    <div style="align-self: center; height: 2px; width:100%; background-color: #FFCB7D; position: relative; top:0; margin: 10px 0px;"></div>
+                   
+                    {% for item in items %}
+                    <div class="cart-item">
+                        <div><img src="{{item.product.imageURL}}" alt="product-image" style="max-height: 40px;width: 60px; align-items: center;"></div>
+                        <div>{{item.product.name}}</div>
+                        <div><span style="border: solid 1px #FFCB7D; padding: 2px 5px;">&#8722;</span><span style="border: solid 1px #FFCB7D; padding: 2px 5px; ">{{item.quantity}}</span><span style="border: solid 1px #FFCB7D; padding: 2px 5px;">&#43;</span></div>
+                        <div >{{item.product.price}}</div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="col-lg-6">
+        <div class="container" id="shipping-details">
+            <div class="shipping-details">
+                <h4>Shipping Details</h4>
+                    <div style="align-self: center; height: 2px; width:60%; background-color: #FFCB7D; position: relative; top: -10px; margin: 10px 3px; border-radius: 10px;"></div>
+                    <form action="" id="form">
+                        <div id="user-info">
+                        <input type="text" placeholder="name" name="name" >
+                        <input type="text" placeholder="Email" name="email">
+                        </div>  
+                        <input type="number" placeholder="phone number" name="phone">
+                        <input type="text" placeholder="address.." name="address" id="address">
+                        <input type="text" placeholder="zip-code" name="zipcode">
+                        <input type="text" placeholder="city" name="city">
+                        <input type="text" placeholder="state" name="state">
+                        <input type="text" placeholder="country" name="country">
+                        <h4 id="email">{{user.email}}</h4>
+                        
+                        <input class="button-border" style="margin: 0px; text-align: center;"  type="submit" id="shipping-detail-submit-btn" value="continue"></input>
+                    </form>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-6">
+        <div class="container hidden" id="payment-details">
+            <div class="payment-details" id="payment">
+                <h4>Payment Details  </h4>
+                    <div style="align-self: center; height: 2px; width:60%; background-color: #FFCB7D; position: relative; top: -10px; margin: 10px 3px; border-radius: 10px;"></div>
+                    <div class="button-dark" id="payment-button" onclick="payWithPaystack()" type='button'> make payment</div>
+                    <div id="payment-done"> done</div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<script type="text/javascript">
+    console.log('shipping')
+    var shipping = '{{order.shipping}}'
+    var total = '{{order.get_cart_total}}'
+    console.log(shipping)
+
+    if( shipping != 'True'){
+        document.getElementById('shipping-details').innerHTML=''
+    }
+
+    var form = document.getElementById('form');
+    var paymentButton  = document.getElementById('payment-done')
+     
+    form.addEventListener('submit', function(e){
+        e.preventDefault()
+        console.log('details was submitted...')
+        document.getElementById('shipping-detail-submit-btn').classList.add('hidden');
+        document.getElementById('payment-details').classList.remove('hidden');
+           
+    })
+    
+    paymentButton.addEventListener('click', function(e){
+       
+        submitFormData()     
+    })
+    
+    if(user!='AnonymousUser'){
+        
+        document.getElementById('user-info').classList.add('hidden')
+        }
+        
+    if(user !='AnonymousUser' && shipping == 'False'){
+        document.getElementById('form').classList.add('hidden');
+        document.getElementById('payment-details').classList.remove('hidden');
+    }
+    
+
+    
+
+    function submitFormData(){
+        
+
+        var userInfo = {
+            'name':null,
+            'email':null,
+            'total':total,
+        }
+
+        var shippingInfo = {
+            'address':null,
+            'city':null,
+            'phone':null,
+            'zipcode':null,
+            'state':null,
+            'country':null,
+        }
+
+        if(shipping == 'True'){
+        shippingInfo.address = form.address.value,
+        shippingInfo.city = form.city.value,
+        shippingInfo.phone = form.phone.value,
+        shippingInfo.zipcode  = form.zipcode.value,
+        shippingInfo.state = form.state.value,
+        shippingInfo.country = form.country.value
+
+        }
+
+        if(user == 'AnonymousUser'){
+            userInfo.name = form.name.value,
+            userInfo.email = form.email.value
+        }
+        var test = shippingInfo.city
+
+        console.log('payment was made...')
+        console.log(test)
+    
+
+        var url = '/process-order/'
+
+        fetch(url,{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json',
+                'X-CSRFToken':csrftoken,
+            },
+            body:JSON.stringify({'form':userInfo, 'shipping':shippingInfo}),
+
+        })
+            .then((response) => {
+                return response.json()
+            })
+
+            .then((data) => {
+                console.log('transaction complete...',data)
+                alert('transaction was successful')
+                window.location.href = "{% url 'ecommerce:index' %}"
+            })
+       
+    }
+
+    /*const paymentForm = document.getElementById('form');
+
+    paymentForm.addEventListener("submit", payWithPaystack, false);
+
+    function payWithPaystack(e) {
+
+        e.preventDefault();
+
+        let handler = PaystackPop.setup({
+
+        key: 'pk_test_23927c5cef5c5185b7c8faa79ce9191ad90a4f31', // Replace with your public key
+
+        email: document.getElementById("email").value,
+
+        amount: document.getElementById("amount").value * 100,
+
+        ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+
+        // label: "Optional string that replaces customer email"
+
+        onClose: function(){
+
+            alert('Window closed.');
+
+        },
+
+        callback: function(response){
+
+            let message = 'Payment complete! Reference: ' + response.reference;
+
+            alert(message);
+
+        }
+
+        });
+
+        handler.openIframe();
+
+        } */
+    
+       /* const paymentForm = document.getElementById('payment-button');
+
+            paymentForm.addEventListener('click', function payWithPaystack(e){
+
+                e.preventDefault();
+
+                let handler = PaystackPop.setup({
+                
+                    key: 'pk_test_23927c5cef5c5185b7c8faa79ce9191ad90a4f31', // Replace with your public key
+
+                    email: document.getElementById('email').textContent,
+                    
+                    amount: document.getElementById('amout').textContent*100,
+
+                    ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+
+                    // label: "Optional string that replaces customer email"
+
+                    onClose: function(){
+                        
+                        alert('paystack payment pop up was closed closed.');
+
+                    },
+
+                    callback: function(response){
+
+                    let message = 'Payment complete! Reference: ' + response.reference + ' please make sure you save this or screenshot it.. thank you';
+
+                    alert(message);
+                    submitFormData();
+
+                    }
+
+                });
+
+                handler.openIframe();
+
+            } ); */
+
+
+</script>
+<script src="https://js.paystack.co/v1/inline.js"></script> 
+{% endblock %}

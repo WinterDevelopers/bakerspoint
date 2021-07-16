@@ -1,0 +1,46 @@
+{% extends 'ecommerce/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="register-form" style="height: 500px; width: 300px;"> 
+    <form method="POST" action="">
+        
+        {% csrf_token %}
+        <div>
+            {% for message in messages %}
+            
+            <p style="color: red;">{{message}}</p>
+            
+            {% endfor %}
+            
+        </div>
+
+        <div>
+            <span>username</span>
+            <span >{{ form.username}}</span>
+        </div>
+        <div>
+            <span style="padding-right: 40px;">Email</span>
+            <span>{{ form.email }}</span>
+        </div>
+        <div>
+            <span style="padding-right: 40px;">password</span>
+            <span>{{ form.password1 }}</span>
+        </div>
+        <div>
+            <span>re-enter password</span>
+            <span>{{ form.password2 }}</span>
+        </div>
+        <input type="submit" name="create user" value="register" style="margin-left: 18%;" >
+
+    </form>
+    <div style="text-align: center; color: white;"><a href="{% url 'ecommerce:login' %}">or login</a></div>
+</div>
+
+<script>
+    var okay = document.getElementsById('milk').className = 'mama';
+    console.log(okay)
+    </script>
+
+{% endblock %}

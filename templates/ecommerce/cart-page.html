@@ -1,0 +1,48 @@
+{% extends 'ecommerce/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <div class="total-cart">
+        <div class="button-border">&#8592; continue shopping</div>
+        <hr>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="total-cart-item">
+                    <div style="flex-grow: 3; font-weight: 600; text-align: start;">Total Quantity: {{order.get_cart_item}}</div>
+                    <div style="flex-grow: 2; font-weight: 600;">Total Price: &#8358; {{ order.get_cart_total }}</div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="total-cart-item">
+                    <div style="flex-grow: 1; text-align: center; width: 50px; margin-right: 5px;" class="button-light"><a href="{% url 'ecommerce:payment-page' %}" style="color: #ffffff;"> Pay as a User</a></div>
+                    <div style="flex-grow: 1; text-align: center; width: 50px; padding: 3px;"  class="button-dark"> Pay as Guest</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+<div class="container">
+    <div class="cart">
+        <div class="cart-item">
+            <div style="padding-right: 30px;"></div>
+            <div>product</div>
+            <div>Qty</div>
+            <div>price</div>
+        </div>
+        <div style="align-self: center; height: 2px; width:100%; background-color: #FFCB7D; position: relative; top:0; margin: 10px 0px;"></div>
+        {% for item in items %}
+        <div class="cart-item">
+            <div><img src="{{item.product.imageURL}}" alt="product-image" style="max-height: 40px;width: 60px; align-items: center;"></div>
+            <div>{{ item.product.name }}</div>
+            <div><span data-action="remove" data-product="{{item.product.id}}" class="update-cart" style="border: solid 1px #FFCB7D; padding: 2px 5px;">&#8722;</span><span style="border: solid 1px #FFCB7D; padding: 2px 5px; ">{{item.quantity}}</span><span data-action="add" data-product="{{item.product.id}}" class="update-cart" style="border: solid 1px #FFCB7D; padding: 2px 5px;">&#43;</span></div>
+            <div >{{item.product.price}}</div>
+        </div>
+        <hr>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

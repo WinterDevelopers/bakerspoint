@@ -1,0 +1,116 @@
+{% load static %}
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="shortcut icon" href="{% static 'images/special.png'  type = 'image/icon' %}">
+    <link rel="stylesheet" href="{% static 'css/site.css' %}">
+    <title>Bakers Point</title>
+    <script type="text/javascript">
+        var user ='{{request.user}}'
+
+        function getToken(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    var csrftoken = getToken('csrftoken');
+
+    function getCookie(name){
+        //split cookie and get all individual name value
+        var cookieArr = document.cookie.split(";");
+
+        for(var i = 0; i < cookieArr.length; i++){
+            var cookiePair = cookieArr[i].split("=");
+
+            if(name == cookiePair[0].trim()){
+                //decode the cookie value and return
+                return decodeURIComponent(cookiePair[1]);
+            }
+        }
+        //return null if not found
+        return null;
+    }
+
+    var cart = JSON.parse(getCookie('cart'))
+    
+
+    if(cart == undefined){
+        cart = {}
+        console.log('cart was created')
+        document.cookie = 'cart = ' + JSON.stringify(cart) + ";domain=;path=/"
+    }
+     
+    console.log('cookies cart :',cart)
+
+
+    </script>
+</head>
+<body>
+
+<div class="navbar" >
+    <div><a href="{% url 'ecommerce:index' %}" class="navbar-header">Bakerspoint</a>
+        <a href="{% url 'ecommerce:cart-page' %}"><img src="{% static 'shoppingbag.jpg' %}" alt="car" class="shopping-bag" height="50px">
+        <div class="shopping-bag-count">
+        {{cartItem}}
+        </div>
+        </a>
+    </div> 
+    <div style="align-items: flex-end; margin-right: 5%;" class="navbar-details">
+        <div style=" margin-right: 230px;">Products</div>
+        <div style=" margin-right: 180px;"><a href="{% url 'admin:index' %}" style="color: #FFCB7D;">Services</a></div>
+        <div style=" margin-right: 130px;">Contacts</div>
+        <div><i class="fas fa-search" style="color: #FFCB7D; margin-right: 100px;"></i></div>
+        <div><i class="far fa-user" style="color:#FFCB7D; margin-right: 50px;"></i></div>
+
+        
+    </div>
+</div>
+</body>    
+{% block content %}
+
+
+{% endblock content %}
+
+    <div class="container-fluid footer">
+        
+        <div style="display: flex; flex-direction: column; justify-content: center; text-align: center;">
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 600;">Contacts &#43;</p>
+            <div style="align-self: center; height: 2px; width:90px; background-color: #FFCB7D; position: relative; top: -15;"></div>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 600;">Services &#43;</p>
+            <div style="align-self: center; height: 2px; width:85px; background-color: #FFCB7D; position: relative; top: -15;"></div>
+            <p style="font-family:Georgia, 'Times New Roman', Times, serif; font-weight: 600;">Terms and conditions &#43;</p>
+            <div style="align-self: center; height: 2px; width:190px; background-color: #FFCB7D; position: relative; top: -15;"></div>
+            <br>
+        </div>
+        <span style="display: flex; flex-direction: row; justify-content: center; padding-left: 50px; padding-right: 50px;">
+            <i class="fab fa-twitter" style="padding-right: 20px;"></i>
+            <i class="fab fa-instagram" style="padding-right: 20px;"></i>
+            <i class="fab fa-whatsapp" style="padding-right: 20px;"></i>
+        </span>
+        <br>
+        <p style="font-size: x-small;">&#169;Bakerspoint since 2009-2021</p>
+        <P style="font-size: x-small;"> developed by winter developers</P>
+    </div>
+
+    <div class="navbar-mobile">
+        <i>menu</i>
+        <i>search</i>
+        <i><a href="{% url 'ecommerce:login' %}">login</a></i>
+        <i>notification</i>
+    </div>
+<script type="text/javascript" src = "{% static 'js/my.js' %}"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script> 
+
+

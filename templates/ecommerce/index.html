@@ -1,0 +1,158 @@
+{% extends 'ecommerce/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    <img src="{% static 'images/welcome.jpg' %}" alt="welcome to the Bakerspoint store"  style="display: block; margin-left: auto; margin-right: auto; border-radius: 10px; max-height: 450px; max-width: 100%;">
+</div>
+<!--
+<div class="container" style="margin-top: 30; margin-left: 15; display: flex;">
+    <img src="{% static 'hot_plate.png' %}" alt="cart"  height="50px"> <div style="color: #FFCB7D; margin-top: 20; margin-left: 20; font-size: large; font-weight: 500;">AS EN DEY HOT</div>
+</div>
+<div class="row" style="margin-left: 20px; margin-right: 15px; margin-top: 25px; display: flex;" >
+    <div class="col-lg-2 col-6">
+        <div class="product-box">
+            <img src="{% static 'cookies.jpg' %}" alt="Products-image" height="150px" width="100%" style="border-radius: 10px;">
+        </div>
+        <div style=" margin-top: 5px;">
+            <h5 style="font-weight: 300;">COOKIES</h5>
+            <span style="color: rgb(255, 238, 0);">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </span>
+            <p style="font-size: xx-small; padding-top: 5px;">Availiable from 7am to 8pm on monaday till saturday</p>
+            <p style="font-weight: 700; font-family: roboto; margin-top: -5px; font-size: x-large;" >&#8358; 300</p>
+            <div style="background-color: #FFCB7D; margin-right: 30px; border-radius: 5px; box-shadow: 3px 2px 10px gray;"><p style="text-align: center;color: whitesmoke;">Add to cart</p></div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-6">
+        <div class="product-box">
+            <img src="{% static 'chin-chin.jpg' %}" alt="Products-image" height="150px" width="100%" style="border-radius: 10px;">
+        </div>
+        <div style="margin-top: 5px;">
+            <h5 style="font-weight: 300;">CHIN-CHIN</h5>
+            <span style="color: rgb(255, 238, 0);">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </span>
+            <p style="font-size: xx-small; padding-top: 5px;">Availiable from 7am to 8pm, excepts on sundays in the week </p>
+            <p style="font-weight: 700; font-family: roboto; margin-top: -5px; font-size: x-large;" >&#8358; 450</p>
+            <div style="background-color: #FFCB7D; margin-right: 30px; border-radius: 5px; box-shadow: 3px 2px 10px gray;"><p style="text-align: center; color: whitesmoke;">Add to cart</p></div>
+        </div>
+    </div>
+</div>
+<div class="container" style="margin-top: 30; margin-left: 15; display: flex;">
+    <img src="{% static 'stock-boxs-black-and-white.png' %}" alt="cart" height="50px"> <div style="color: #FFCB7D; margin-top: 20; margin-left: 20; font-size: large; font-weight: 500;">AVALIABLE STOCKS</div>
+</div>
+<div class="row" style="margin-left: 20px; margin-right: 15px; margin-top: 25px;" >
+    <div class="col-lg-2 col-6">
+        <div class="product-box">
+            <img src="{% static 'cookies.jpg' %}" alt="Products-image" height="150px" width="100%" style="border-radius: 10px;">
+        </div>
+        <div style=" margin-top: 5px;">
+            <h5 style="font-weight: 300;">COOKIES</h5>
+            <span style="color: rgb(255, 238, 0);">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </span>
+            <p style="font-size: xx-small; padding-top: 5px;">Availiable from 7am to 8pm on monaday till saturday</p>
+            <p style="font-weight: 700; font-family: roboto; margin-top: -5px; font-size: x-large;" >&#8358; 300</p>
+            <div style="background-color: #FFCB7D; margin-right: 30px; border-radius: 5px; box-shadow: 3px 2px 10px gray;"><p style="text-align: center;color: whitesmoke;">Add to cart</p></div>
+        </div>
+    </div>
+    <div class="col-lg-2 col-6">
+        <div class="product-box">
+            <img src="{% static 'chin-chin.jpg' %}" alt="Products-image" height="150px" width="100%" style="border-radius: 10px;">
+        </div>
+        <div style="margin-top: 5px;">
+            <h5 style="font-weight: 300;">CHIN-CHIN</h5>
+            <span style="color: rgb(255, 238, 0);">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </span>
+            <p style="font-size: xx-small; padding-top: 5px;">Availiable from 7am to 8pm, excepts on sundays in the week </p>
+            <p style="font-weight: 700; font-family: roboto; margin-top: -5px; font-size: x-large;" >&#8358; 450</p>
+            <div style="background-color: #FFCB7D; margin-right: 30px; border-radius: 5px; box-shadow: 3px 2px 10px gray;"><p style="text-align: center; color: whitesmoke;">Add to cart</p></div>
+        </div>
+    </div>
+</div> -->
+<div class="container" style="margin-left: 15; margin-top: 30; display: flex;">
+    <img src="{% static 'images/top-offer.png' %}" alt="top-offers" height="50px">
+    <div style="color: #FFCB7D; margin-top: 20; margin-left: 20; font-size: large; font-weight: 500;">TOP OFFERS</div>
+</div>
+<div class="row" style="margin-left: 20px; margin-right: 15px; margin-top: 25px;" >
+{% for product in products  %}
+    <div class="col-lg-2 col-6 nig">
+        <div class="product-box">
+          <a href={% url 'ecommerce:product-page' product.id %}><img src="{{ product.imageURL }}" alt="Products-image" height="150px" width="100%" style="border-radius: 10px;"></a>
+        </div>
+        <div style=" margin-top: 5px;">
+            <h5 style="font-weight: 300;">{{product.name}}</h5>
+            <span style="color: rgb(255, 238, 0);">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </span>
+            <p style="font-size: xx-small; padding-top: 5px; margin-bottom: 25px;">Availiable from 7am to 8pm </p>
+            <p style="font-weight: 700; font-family: roboto; margin-top: -5px; font-size: large;" >&#8358; {{product.price}}
+                <sup style="font-size: x-small; color: rgb(255, 255, 255); position: relative; top: -12px; background-color: rgba(116, 116, 116, 0.178); font-weight: 800;padding: 3px; border-radius: 7px;"><del>400.00</del></sup>
+            </p>
+            <div style="background-color: #FFCB7D; margin-right: 30px; border-radius: 5px; box-shadow: 2px 2px 5px rgba(173, 116, 116, 0.493);">
+                <div data-product="{{product.id}}" data-action="add" class="cart-btn update-cart" type='button' >Add to cart</div>
+                <p id="update-cart"></p>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>
+<br>
+<br>
+<div class="container" style="margin-bottom:30;">
+    <div style="display: flex; flex-direction: row; align-items: center;">
+        <img src="{% static 'images/event-table.gif' %}" alt="event" height="255px" width="100%" >
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+    <div class="col-md-6" style="margin-bottom:10px;">
+            <div style="display:flex;">
+                <div class="subscribe-box-upper">
+                    <div style="font-weight: 600; font-family: roboto; font-size: large;">Subscribe to Our <br> Newsletter</div>
+                    <div style="padding-left: 10px; padding: right 10px; font-size: small;">To get upadates on our new products <br> and promo prices</div>
+                </div>
+                <div class="subscribe-box-lower">
+                    <form action="" style="padding: 20;">
+                        <input type="text" placeholder="Name..." style="margin-top: 5px; background-color: #fffdfa; border: none;">
+                        <input type="text" placeholder="Email..." style="margin-top: 10px; background-color: #fffdfa; border: none;">
+                        <input type="button" name="subscribe" id="subscribe" value="subscribe">
+                    </form>
+                </div>
+            </div>
+        </div>
+    <div class="col-md-6" style="margin-bottom: 10px;">
+        <div class="about">
+            <h3 style="color: rgb(44, 44, 44)">About </h3>
+            <div style="width: 30%; height: 1px; position: relative; top: -5px; background-color: #1b1b1b; margin-left: 35%;"></div>
+            <p>we are here to server and add whatever that would explain more about the company.
+                But lets just make it look a little more reasonable, so this would still be updated and thank you </p>
+        </div>
+    </div>
+    </div>
+</div> 
+
+{% endblock %}
