@@ -23,7 +23,7 @@ from ecommerce.views import base, index, productPage, cartPage, paymentPage, reg
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('base', base, name='base'),
-    path('', include('ecommerce.urls'), name='home-page')
+    path('/', include('ecommerce.urls'), name='home-page')
 ]
 
 
