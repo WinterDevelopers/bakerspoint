@@ -6,7 +6,7 @@ from .views import index, productPage, cartPage, paymentPage, updateItem, proces
 app_name = 'ecommerce'
 
 urlpatterns = [
-    path('/', index, name ='index'),
+    path('', index, name ='index'),
     path('registration/', registerPage, name= 'registration'),
     path('login/', loginPage, name='login'),
     path('cart-page/', cartPage, name = 'cart-page'),
