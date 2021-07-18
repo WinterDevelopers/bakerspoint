@@ -30,7 +30,7 @@ SECRET_KEY = '$fo!t=8()z%ctfr^e-$rs_&v&a7j!a^m2@=#ml0u2az=6%d=i&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['bakerspoint.herokuapp.com']
+ALLOWED_HOSTS = ['bakerspoint.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
