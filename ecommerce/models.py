@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.deletion import SET_NULL
 
 # Create your models here.
 
@@ -30,6 +31,7 @@ class Product(models.Model):
         except:
             url = ''
         return url
+
 
     def __str__(self):
         return self.name

@@ -105,7 +105,7 @@ def productPage(request, id):
     if request.user.is_authenticated:
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
-        items = OrderItem.quantity
+        items = order.orderitem_set.all()
         cartItem = order.get_cart_item
 
     else:
