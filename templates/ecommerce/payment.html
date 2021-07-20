@@ -39,9 +39,9 @@
     <div class="col-lg-6">
         <div class="container" id="shipping-details">
             <div class="shipping-details">
-                <h4>Shipping Details</h4>
-                    <div style="align-self: center; height: 2px; width:60%; background-color: #FFCB7D; position: relative; top: -10px; margin: 10px 3px; border-radius: 10px;"></div>
-                    <form action="" id="form">
+                <h4 style="text-align: center;">Shipping Details</h4>
+                    <div style="align-self: center; height: 2px; width:90%; background-color: #FFCB7D; position: relative; top: -10px; margin: 10px 5px; border-radius: 10px;"></div>
+                    <form action="" id="form" style="margin-left: 10%;">
                         <div id="user-info">
                         <input type="text" placeholder="name" name="name" >
                         <input type="text" placeholder="Email" name="email">
@@ -52,9 +52,9 @@
                         <input type="text" placeholder="city" name="city">
                         <input type="text" placeholder="state" name="state">
                         <input type="text" placeholder="country" name="country">
-                        <h4 id="email">{{user.email}}</h4>
                         
-                        <input class="button-border" style="margin: 0px; text-align: center;"  type="submit" id="shipping-detail-submit-btn" value="continue"></input>
+                        
+                        <input class="button-border" style="margin: 0px; text-align: center; margin-left: 30px;"  type="submit" id="shipping-detail-submit-btn" value="continue"></input>
                     </form>
 
             </div>
@@ -63,11 +63,11 @@
     
     <div class="col-lg-6">
         <div class="container hidden" id="payment-details">
-            <div class="payment-details" id="payment">
-                <h4>Payment Details  </h4>
-                    <div style="align-self: center; height: 2px; width:60%; background-color: #FFCB7D; position: relative; top: -10px; margin: 10px 3px; border-radius: 10px;"></div>
-                    <div class="button-dark" id="payment-button" onclick="payWithPaystack()" type='button'> make payment</div>
-                    <div id="payment-done"> done</div>
+            <div class="payment-details" id="payment" style="padding-left:10%">
+                <h5 style="text-align: center;">Make payment </h5>
+                    <div style="align-self: center; height: 2px; background-color: #FFCB7D; position: relative; top: -10px; width: 90%; margin-top: 1%; margin-bottom:5%; border-radius: 10px;"></div>
+                    <div class="button-dark" style="padding: 4.5px;" id="payment-button" onclick="payWithPaystack()" type='button'> continue </div>
+                    <div id="payment-done">.</div>
             </div>
         </div>
     </div>

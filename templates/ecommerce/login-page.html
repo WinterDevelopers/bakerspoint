@@ -4,8 +4,8 @@
 
 
 
-<div class="login-form">
-    <form method="POST" action="" >
+<div class="login-form" style="box-shadow: rgb(172, 172, 172) 1px 1px 5px 1px">
+    <form method="POST" action="" style="margin-left: 10px;">
         {% csrf_token %}
         <div>
             <input type="text" placeholder="username..." name='username'>
@@ -18,6 +18,6 @@
     
     </form>
 
-    <div style="color: white; text-align: center;"><a href="{% url 'ecommerce:registration' %}"><p>or register</p></a></div>
+    <div style="color: white; text-align: center;"><a href="{% url 'ecommerce:registration' %}"><p style="color: whitesmoke;">or register</p></a></div>
 </div>
 {% endblock %}

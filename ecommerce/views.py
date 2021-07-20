@@ -69,7 +69,10 @@ def registerPage(request):
             return redirect('ecommerce:login')
         else:
             print('cant save user')
-    context = {'form':form}
+
+    cartItem = 0
+
+    context = {'form':form,'cartItem':cartItem}
 
     template_name = 'ecommerce/register-page.html'
 
@@ -94,8 +97,11 @@ def loginPage(request):
         else:
             messages.info(request, 'details not correct')
 
+    cartItem = 0
+
+    context = {'cartItem':cartItem}
     template_name = 'ecommerce/login-page.html'
-    return render(request, template_name)
+    return render(request, template_name, context)
 
 
 def productPage(request, id):
@@ -149,7 +155,7 @@ def productPage(request, id):
 
     template_name = 'ecommerce/product-page.html'
 
-    context = {'product':product, 'items':items}
+    context = {'product':product, 'items':items, 'cartItem':cartItem}
 
     return render(request, template_name, context)
 

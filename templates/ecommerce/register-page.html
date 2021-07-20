@@ -3,8 +3,8 @@
 {% block content %}
 
 
-<div class="register-form" style="height: 500px; width: 300px;"> 
-    <form method="POST" action="">
+<div class="register-form" style="height: 500px; width: 300px; box-shadow: rgb(172, 172, 172) 1px 1px 5px 1px"> 
+    <form method="POST" action="" style="margin-left: 10px;">
         
         {% csrf_token %}
         <div>
@@ -35,7 +35,7 @@
         <input type="submit" name="create user" value="register" style="margin-left: 18%;" >
 
     </form>
-    <div style="text-align: center; color: white;"><a href="{% url 'ecommerce:login' %}">or login</a></div>
+    <div style="text-align: center"><a href="{% url 'ecommerce:login' %}" style="color: white;">or login</a></div>
 </div>
 
 <script>

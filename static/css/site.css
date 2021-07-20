@@ -320,7 +320,11 @@ th{
     margin-top: 20px;
     margin-bottom: 20px;
 }
-
+.product-other-image{
+    box-shadow: #7a7a7a 1px 1px 5px 0.5px;
+    border-radius: 5px;
+    margin-left: 15px;
+}
 @media screen and (max-width:600px){
     body{
         background-color: rgba(255, 255, 255, 0.712);
@@ -362,6 +366,7 @@ th{
     .navbar-mobile >i {
         margin-left: 50px;
         font-size: x-large;
+        margin-top: 10px;
     }
 
     .nig{
