@@ -42,7 +42,13 @@
     <p>other products you may like</p>
 
     {% for other_product in  other_products %}
-    <p>{{other_product.name}}</p>
+    <div>
+        <div><img src="{{ other_product.imageURL }}" alt="product-image" style="width: 100px; height: 100px; border-radius: 5px 5px 0px 0px;"></div>
+        <div style="background-color: aliceblue; width: 100px; margin-bottom: 20px; border-radius: 0px 0px 5px 5px;">
+            <p>{{other_product.name}}</p>
+            {{other_product.price}}
+        </div>
+    </div>
     {% endfor %}
 
 </div>
