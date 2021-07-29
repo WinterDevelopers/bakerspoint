@@ -171,9 +171,9 @@ input[type=submit]{
     background-color:#FFCB7D;
     color: white;
     border-radius: 10px 0px 0px 0px;
-    width: 350;
+    width: 300px;
     text-align: center;
-    padding-bottom: 1px;
+    padding-bottom: 3px;
     padding-top: 20px;
 
 }
@@ -182,7 +182,7 @@ input[type=submit]{
     background-color:#f7e0bd;
     color: white;
     border-radius: 0px 0px 10px 0px;
-    width: 350;
+    width: 300px;
     text-align: center;
 }
 

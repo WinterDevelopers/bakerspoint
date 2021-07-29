@@ -107,6 +107,8 @@ def loginPage(request):
 def productPage(request, id):
 
     product = get_object_or_404(Product, id=id)
+    other_products = Product.objects.all()[1:3]
+
     
     if request.user.is_authenticated:
         customer = request.user.customer
@@ -140,7 +142,8 @@ def productPage(request, id):
                         'id':product.id,
                         'name':product.name,
                         'price':product.price,
-                        'imageURL':product.imageURL
+                        'imageURL':product.imageURL,
+                        'quantity':product.quantity
                         },
                     'quantity':cart[i]['quantity'],
                     'get_total':total
@@ -155,7 +158,7 @@ def productPage(request, id):
 
     template_name = 'ecommerce/product-page.html'
 
-    context = {'product':product, 'items':items, 'cartItem':cartItem}
+    context = {'product':product, 'items':items, 'cartItem':cartItem, 'other_products':other_products}
 
     return render(request, template_name, context)
 
