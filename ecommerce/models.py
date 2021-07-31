@@ -32,12 +32,6 @@ class Product(models.Model):
             url = ''
         return url
 
-    @property
-    def quantity(self):
-        orderitem = self.orderitem_set.all()
-        num = sum([okay.quantity for okay in orderitem])
-
-        return num
 
     def __str__(self):
         return self.name
@@ -85,6 +79,7 @@ class OrderItem(models.Model):
     def get_total(self):
         total = self.product.price * self.quantity
         return total
+
 
     def __str__(self):
         return str(self.order)

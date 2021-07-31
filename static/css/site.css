@@ -325,6 +325,15 @@ th{
     border-radius: 5px;
     margin-left: 15px;
 }
+.other-product{
+    display: flex;
+    flex-direction: row;
+}
+.other-product > div{
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px;
+}
 @media screen and (max-width:600px){
     body{
         background-color: rgba(255, 255, 255, 0.712);

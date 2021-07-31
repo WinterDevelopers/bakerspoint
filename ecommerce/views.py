@@ -107,6 +107,8 @@ def loginPage(request):
 def productPage(request, id):
 
     product = get_object_or_404(Product, id=id)
+    qty= product.orderitem_set.all()
+    num = sum([okay.quantity for okay in qty])
     other_products = Product.objects.all()[1:3]
 
     
@@ -114,7 +116,11 @@ def productPage(request, id):
         customer = request.user.customer
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
+        
+
         cartItem = order.get_cart_item
+
+        print('qun:', num)
 
     else:
         try:
@@ -142,8 +148,7 @@ def productPage(request, id):
                         'id':product.id,
                         'name':product.name,
                         'price':product.price,
-                        'imageURL':product.imageURL,
-                        'quantity':product.quantity
+                        'imageURL':product.imageURL
                         },
                     'quantity':cart[i]['quantity'],
                     'get_total':total
@@ -158,7 +163,7 @@ def productPage(request, id):
 
     template_name = 'ecommerce/product-page.html'
 
-    context = {'product':product, 'items':items, 'cartItem':cartItem, 'other_products':other_products}
+    context = {'product':product, 'items':items, 'cartItem':cartItem, 'other_products':other_products, 'num':num}
 
     return render(request, template_name, context)
 
