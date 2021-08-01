@@ -329,10 +329,18 @@ th{
     display: flex;
     flex-direction: row;
 }
-.other-product > div{
+.other-product > div {
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 20px;
+    display: block;
+}
+div.vertical-scroll{
+    overflow: auto;
+    white-space: nowrap;
+}
+div.vertical-scroll div {
+    display: inline-block;
 }
 @media screen and (max-width:600px){
     body{

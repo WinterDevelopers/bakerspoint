@@ -109,7 +109,7 @@ def productPage(request, id):
     product = get_object_or_404(Product, id=id)
     qty= product.orderitem_set.all()
     num = sum([okay.quantity for okay in qty])
-    other_products = Product.objects.all()[1:3]
+    other_products = Product.objects.all()[1:6]
 
     
     if request.user.is_authenticated:

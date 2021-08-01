@@ -14,6 +14,7 @@
 </div>
 <hr>
 <div class="container" style="margin-bottom: 20px;">
+
     <h3>{{product.name}}</h3>
     <p>milk butter chin-chin, if you have ever wanted the perfect chin-chin for family or friends then you have te right product here</p>
     <h5>Ingredients</h5>
@@ -22,6 +23,7 @@
     <li>butter</li>
     <li>water</li>
 </div>
+
 
 <div class="container" style="display: flex; flex-direction: row;">
     <div style="padding-left: 5px; padding-right: 5px; border-radius: 5px; font-family: roboto; font-size: x-large; margin-right: 30px;"> Quantity </div>
@@ -42,16 +44,18 @@
     <p>other products you may like</p>
 
     
-<div class="other-product">
-    {% for other_product in  other_products %}
-        <div>
-            <div><img src="{{ other_product.imageURL }}" alt="product-image" style="width: 100px; height: 100px; border-radius: 5px 5px 0px 0px;"></div>
-            <div style="background-color: aliceblue; width: 100px; margin-bottom: 20px; border-radius: 0px 0px 5px 5px;">
-            <p>{{other_product.name}}<p>
+
+<div class="vertical-scroll">
+    <div class="other-product">
+        {% for other_product in  other_products %}
+            <div>
+                <img src="{{ other_product.imageURL }}" alt="product-image" style="width: 100px; height: 100px; border-radius: 5px;">
+                <p>{{other_product.name}}<p>
                 {{other_product.price}}
+                
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
     
 
