@@ -314,6 +314,7 @@ def notification(request):
 
     boss = json.loads(request.body)
     print(boss)
+
     CompletedTransaction.objects.create(
         customer = customer,
         tracking_id = boss['tracking'],
@@ -321,3 +322,19 @@ def notification(request):
     )
 
     return JsonResponse("tracking id was sent", safe=False)
+
+
+def notification_page(request):
+
+    if request.user.is_authenticated:
+        tracking_id  = CompletedTransaction.tracking_id
+        messages = CompletedTransaction.message
+
+    else:
+        tracking_id = '**********'
+        messages = "your are not logged in"
+
+    template_name="ecommerce/notification_page.html"
+    context = {"tracking_id":tracking_id, "messages":messages}
+
+    return render(request, template_name, context)

@@ -71,7 +71,7 @@
             </div>
         </div>
     </div>
-    
+    <div id="email">{{user.email}}</div>
 </div>
 
 <script type="text/javascript">
@@ -252,6 +252,65 @@
                 handler.openIframe();
 
             } ); */
+
+const paymentForm = document.getElementById('payment-button');
+
+    paymentForm.addEventListener('click', function payWithPaystack(e){
+
+        e.preventDefault();
+
+        let handler = PaystackPop.setup({
+        
+            key: 'pk_test_23927c5cef5c5185b7c8faa79ce9191ad90a4f31', // Replace with your public key
+
+            email: "hello@gmail.com",
+            
+            amount: document.getElementById('amout').textContent*100,
+
+            ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+
+            // label: "Optional string that replaces customer email"
+
+            onClose: function(){
+                
+                alert('paystack payment pop up was closed closed.');
+
+            },
+
+            callback: function(response){
+
+            let message = 'Payment complete! Reference: ' + response.reference + ' please make sure you save this or screenshot it.. thank you';
+
+            alert(message);
+        
+
+            tracking = response.reference
+            
+            fetch('/notification/',{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json',
+                    'X-CSRFToken':csrftoken,
+                },
+                body:JSON.stringify({'tracking':tracking}),
+            } )
+
+                .then((response)=> {
+                    return response.json()
+                })
+
+                .then((data) => {
+                    console.log('saved to customer notification', data)
+                })
+            
+            submitFormData();
+            }
+
+        });
+
+        handler.openIframe();
+
+        } );
 
 
 </script>
