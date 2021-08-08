@@ -25,7 +25,7 @@ def base(request):
     else:
         user = ''
         items = []
-        order = {'get_cart_total':45000, 'get_cart_item':11}
+        order = {'get_cart_total':0, 'get_cart_item':0}
         cartItem = order['get_cart_item']
     
     template_name = 'ecommerce/base.html'
@@ -46,7 +46,7 @@ def index(request):
 
     else:
         items = []
-        order = {'get_cart_total':45000, 'get_cart_item':11}
+        order = {'get_cart_total':0, 'get_cart_item':0}
         cartItem = order['get_cart_item']
 
     template_name  = 'ecommerce/index.html'
@@ -68,7 +68,7 @@ def registerPage(request):
             messages.success(request, 'Account has been sucssesfully created '+ user)
             return redirect('ecommerce:login')
         else:
-            print('cant save user')
+            print('cant create user')
 
     cartItem = 0
 
@@ -306,19 +306,19 @@ def processOrder(request):
                 country = data['shipping']['country']
             )
             print(customer)
-
+        else:
+            print('did\'nt save shipping details')
     return JsonResponse('payment was sucssesful...', safe=False)
 
 def notification(request):
-    customer = request.user.customer
-
+    current_customer = request.user.customer
     boss = json.loads(request.body)
     print(boss)
 
-    CompletedTransaction.objects.create(
-        customer = customer,
+    CompletedTransaction.objects.get_or_create(
+        customer = current_customer,
         tracking_id = boss['tracking'],
-        message='this worked'
+        message ='this worked'
     )
 
     return JsonResponse("tracking id was sent", safe=False)

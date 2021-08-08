@@ -36,7 +36,7 @@
 
     <hr>
 <div style="display: flex; flex-direction: row; justify-content: center; margin-bottom: 50px; text-align: center; height: 30px;">
-    <div class="button-light"><p>Add to cart</p></div>
+    <div class="button-light update-cart" data-product="{{product.id}}" data-action="add" type='button' ><p>Add to cart</p></div>
     <div class="button-dark"><a href="{% url 'ecommerce:cart-page' %}" style="color: #FFCB7D;"><p>Buy Now</p></a></div>
 </div>
 

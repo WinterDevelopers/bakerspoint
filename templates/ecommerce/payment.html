@@ -26,7 +26,10 @@
                     <div class="cart-item">
                         <div><img src="{{item.product.imageURL}}" alt="product-image" style="max-height: 40px;width: 60px; align-items: center;"></div>
                         <div>{{item.product.name}}</div>
-                        <div><span style="border: solid 1px #FFCB7D; padding: 2px 5px;">&#8722;</span><span style="border: solid 1px #FFCB7D; padding: 2px 5px; ">{{item.quantity}}</span><span style="border: solid 1px #FFCB7D; padding: 2px 5px;">&#43;</span></div>
+                        <div><span style="border: solid 1px #FFCB7D; padding: 2px 5px;" data-action="remove" data-product="{{item.product.id}}" class="update-cart">&#8722;</span>
+                            <span style="border: solid 1px #FFCB7D; padding: 2px 5px;"  >{{item.quantity}}</span>
+                            <span style="border: solid 1px #FFCB7D; padding: 2px 5px;" data-product="{{item.product.id}}" data-action="remove">&#43;</span>
+                        </div>
                         <div >{{item.product.price}}</div>
                     </div>
                     <hr>
@@ -285,7 +288,7 @@ const paymentForm = document.getElementById('payment-button');
         
 
             tracking = response.reference
-            
+            //API for the payment details
             fetch('/notification/',{
                 method:'POST',
                 headers:{

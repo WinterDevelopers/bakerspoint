@@ -7,14 +7,7 @@
     <form method="POST" action="" style="margin-left: 10px;">
         
         {% csrf_token %}
-        <div>
-            {% for message in messages %}
-            
-            <p style="color: red;">{{message}}</p>
-            
-            {% endfor %}
-            
-        </div>
+        
 
         <div>
             <span>username</span>
@@ -37,7 +30,14 @@
     </form>
     <div style="text-align: center"><a href="{% url 'ecommerce:login' %}" style="color: white;">or login</a></div>
 </div>
-
+<div>
+    {% for message in messages %}
+    
+    <p style="color: red;">{{message}}</p>
+    
+    {% endfor %}
+    
+</div>
 <script>
     var okay = document.getElementsById('milk').className = 'mama';
     console.log(okay)
