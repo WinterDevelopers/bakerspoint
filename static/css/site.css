@@ -245,7 +245,7 @@ input[type=submit]{
     justify-content: space-between;
     color: #FFCB7D;
     background-color: rgb(255, 255, 255);
-    padding: 1px;
+    padding: 10px;
 }
 .navbar-header{
     font-weight: bolder; 
@@ -256,7 +256,7 @@ input[type=submit]{
 
 .navbar > div{
     padding-left: 20px;
-    padding-right: 10px;
+    padding-right: 0px;
 }
 
 .navbar-details{
@@ -348,9 +348,6 @@ div.vertical-scroll div {
     display: inline-block;
 }
 @media screen and (max-width:600px){
-    body{
-        background-color: rgba(255, 255, 255, 0.712);
-    }
     table{
         margin-left: 50px;
     }
@@ -409,5 +406,8 @@ div.vertical-scroll div {
         margin-top: 50px;
         margin-bottom: 70px;
     }
-        
+    body{
+        background-color: #fdf4e7;
+    }
+    
 }
