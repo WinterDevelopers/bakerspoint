@@ -374,7 +374,7 @@ div.vertical-scroll div {
     .navbar-mobile{
         position: fixed;
         top: 92%;
-        background-color: rgb(255, 255, 255);
+        background-color: #fdf4e7;
         color: #FFCB7D;
         padding: 10px;
         display: flex;
