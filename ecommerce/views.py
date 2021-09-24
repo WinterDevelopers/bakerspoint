@@ -107,17 +107,17 @@ def loginPage(request):
 def productPage(request, id):
 
     product = get_object_or_404(Product, id=id)
-    qty= product.orderitem_set.all()
-    num = sum([okay.quantity for okay in qty])
     other_products = Product.objects.all()[1:6]
 
     
     if request.user.is_authenticated:
         customer = request.user.customer
+        qty= product.orderitem_set.all()
+        num = sum([okay.quantity for okay in qty])
         order, created = Order.objects.get_or_create(customer=customer, complete=False)
         items = order.orderitem_set.all()
         
-
+    
         cartItem = order.get_cart_item
 
         print('qun:', num)
@@ -131,6 +131,7 @@ def productPage(request, id):
 
         print('cart:', cart)
         items = []
+        num = 1
         order = {'get_cart_total':0, 'get_cart_item':0, 'shipping':False}
         cartItem = order['get_cart_item']
 

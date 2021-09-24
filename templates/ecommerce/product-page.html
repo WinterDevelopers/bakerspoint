@@ -2,8 +2,8 @@
 {% load static %}
 {% block content %}
 
-<div class="container" style="margin-bottom: 30px;">
-    <img id="main-image" src="{{product.imageURL}}" alt="welcome to the Bakerspoint store"  style="display: block; margin-left: auto; margin-right: auto; border-radius: 10px; height: 250px; width: 100%;">
+<div class="container" style="margin-bottom: 30px; margin-top: 20px;">
+    <img id="main-image" src="{{product.imageURL}}" alt="welcome to the Bakerspoint store" class="display-image">
     <div style="display: flex; justify-content: center;">
         <div style="display: flex; flex-direction: row; flex-wrap: wrap;  margin-top: 40px;">
         <img src="{{product.other_image_1.url}}" alt="product-image" style="max-height: 70px; width: 70px; margin-right: auto;" onclick="image1()"  id="image-1" class="product-other-image">
@@ -13,9 +13,9 @@
     </div>
 </div>
 <hr>
-<div class="container" style="margin-bottom: 20px;">
 
-    <h3>{{product.name}}</h3>
+<div class="container" style="margin-bottom: 20px;">
+    <div style="display: flex; flex-direction: row;" ><p style="font-size: x-large; font-weight: bold;">{{product.name}}</p>  <p style="padding-left: 45%;font-size: x-large; font-weight: bold;">{{product.price}}</p></div>
     <p>milk butter chin-chin, if you have ever wanted the perfect chin-chin for family or friends then you have te right product here</p>
     <h5>Ingredients</h5>
     <li>flour</li>
@@ -32,6 +32,8 @@
     <div style="border: solid #FFCB7D 1px; color: rgb(15, 15, 15); padding: 3px; padding-left: 15px; padding-right: 15px; font-size: large; font-weight: 700;">{{num}}</div>
     
     <div style="border: solid #FFCB7D 1px; color: rgb(15, 15, 15); padding: 3px; padding-left: 10px; padding-right: 10px;">&#43;</div>
+
+    
 </div>
 
     <hr>
@@ -50,9 +52,10 @@
         {% for other_product in  other_products %}
             <div>
                 <img src="{{ other_product.imageURL }}" alt="product-image" style="width: 100px; height: 100px; border-radius: 5px;">
-                <p>{{other_product.name}}<p>
-                {{other_product.price}}
-                
+                <div style="display: flex; flex-direction: row; font-size: small; max-width: 100px; "> <p style="padding-right: 10px;">{{other_product.name}}<p>
+                    <p style="max-width: 50px;">{{other_product.price}}</p>
+                    </div>
+                    <div style="align-content: center; background-color: #FFCB7D; color: white; padding: 5px; border-radius: 5px; width: 100%;">checkout</div>
             </div>
         {% endfor %}
     </div>
