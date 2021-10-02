@@ -5,6 +5,14 @@
 
 
 <div class="login-form" style="box-shadow: rgb(172, 172, 172) 1px 1px 5px 1px">
+    <div>
+        {% for message in messages %}
+        
+        <p style="color: rgba(255, 6, 6, 0.911); margin-left: 15px; background-color: rgba(255, 4, 4, 0.151); padding: 10px;">{{message}}</p>
+        
+        {% endfor %}
+        
+    </div>
     <form method="POST" action="" style="margin-left: 10px;">
         {% csrf_token %}
         <div>

@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, get_object_or_404, redirect
 from django.http import JsonResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
 
@@ -92,8 +93,12 @@ def loginPage(request):
             customer, created = Customer.objects.get_or_create(user=user)
            
             order, created = Order.objects.get_or_create(customer=customer, complete=False)
+            ten = 10
+            if ten > 1 :
+                return redirect('ecommerce:cart-page')
 
-            return redirect('ecommerce:index')
+            else:
+                return redirect('ecommerce:index')
         else:
             messages.info(request, 'details not correct')
 
@@ -219,6 +224,8 @@ def cartPage(request):
 
     return render(request, template_name, context)
 
+    
+@login_required(login_url='ecommerce:login')
 def paymentPage(request):
     
     if request.user.is_authenticated:
