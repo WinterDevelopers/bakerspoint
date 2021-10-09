@@ -122,35 +122,32 @@
 </div>
 <br>
 <br>
-<div class="container" style="margin-bottom:30;">
-    <div style="display: flex; flex-direction: row; align-items: center;">
-        <img src="{% static 'images/event-table.gif' %}" alt="event" height="255px" width="100%" >
+<div class="others">
+    <div class="container" style="margin-bottom:20px;">
+        <div style="display: flex; flex-direction: row; align-items: center;">
+            <img src="{% static 'images/event-table.gif' %}" alt="event" height="255px" width="100%" >
+        </div>
+    </div>
+    <div class="about">
+        <h3 style="color: rgb(44, 44, 44)">About </h3>
+        <div style="width: 30%; height: 1px; position: relative; top: -5px; background-color: #1b1b1b; margin-left: 35%;"></div>
+        <p>we are here to server and add whatever that would explain more about the company.
+            But lets just make it look a little more reasonable, so this would still be updated and thank you </p>
+    </div>
+    <div style="display:flex; margin-bottom: 30px; margin-right:10px; margin-left: 10px;">
+        <div class="subscribe-box-upper">
+            <div style="font-weight: 600; font-family: roboto; font-size: large;">Subscribe to Our <br> Newsletter</div>
+            <div style="padding-left: 10px; padding: right 10px; font-size: small;">To get upadates on our new products <br> and promo prices</div>
+        </div>
+        <div class="subscribe-box-lower">
+            <form action="" style="padding: 10px;">
+                <input type="text" placeholder="Name..." style="margin-top: 5px; background-color: #fffdfa; border: none;">
+                <input type="text" placeholder="Email..." style="margin-top: 10px; background-color: #fffdfa; border: none;">
+                <input type="button" name="subscribe" id="subscribe" value="subscribe">
+            </form>
+        </div>
     </div>
 </div>
-    <div class="row">
-    <div class="col-md-6" style="margin-bottom:30px; padding-left: 5%;">
-            <div style="display:flex; width: 65%; margin:5px;">
-                <div class="subscribe-box-upper">
-                    <div style="font-weight: 600; font-family: roboto; font-size: large;">Subscribe to Our <br> Newsletter</div>
-                    <div style="padding-left: 10px; padding: right 10px; font-size: small;">To get upadates on our new products <br> and promo prices</div>
-                </div>
-                <div class="subscribe-box-lower">
-                    <form action="" style="padding: 20;">
-                        <input type="text" placeholder="Name..." style="margin-top: 5px; background-color: #fffdfa; border: none;">
-                        <input type="text" placeholder="Email..." style="margin-top: 10px; background-color: #fffdfa; border: none;">
-                        <input type="button" name="subscribe" id="subscribe" value="subscribe">
-                    </form>
-                </div>
-            </div>
-        </div>
-    <div class="col-md-6" style="margin-bottom: 30px;">
-        <div class="about">
-            <h3 style="color: rgb(44, 44, 44)">About </h3>
-            <div style="width: 30%; height: 1px; position: relative; top: -5px; background-color: #1b1b1b; margin-left: 35%;"></div>
-            <p>we are here to server and add whatever that would explain more about the company.
-                But lets just make it look a little more reasonable, so this would still be updated and thank you </p>
-        </div>
-    </div>
-</div> 
+    
 
 {% endblock %}

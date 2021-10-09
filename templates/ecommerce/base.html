@@ -1,6 +1,7 @@
 {% load static %}
 <head>
     <meta charset="utf-8">
+    <meta name="theme-color" content="#f7e0bd" >
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
@@ -85,6 +86,13 @@
 
 </body>
 
+    <div class="navbar-mobile">
+        <i class="fas fa-bars"style=" font-size: x-large"></i>
+        <i class="fas fa-search" style=" font-size: x-large; margin-left: 20%;"></i>
+        <a href="{% url 'ecommerce:login' %}" style="margin-left: 20%;"><i class="fas fa-sign-in-alt" style="color: #FFCB7D; font-size: x-large; margin-top: 10px;"></i></a>
+        <i class="far fa-bell" style=" font-size: x-large;margin-left: 20%;"></i>
+    </div>
+
     <div class="container-fuild footer">
         
         <div style="display: flex; flex-direction: column; justify-content: center; text-align: center;">
@@ -104,13 +112,6 @@
         <br>
         <p style="font-size: x-small;">&#169;Bakerspoint since 2009-2021</p>
         <P style="font-size: x-small;"> developed by winter developers</P>
-    </div>
-
-    <div class="navbar-mobile">
-        <i class="fas fa-bars"style=" font-size: x-large"></i>
-        <i class="fas fa-search" style=" font-size: x-large; margin-left: 20%;"></i>
-        <a href="{% url 'ecommerce:login' %}" style="margin-left: 20%;"><i class="fas fa-sign-in-alt" style="color: #FFCB7D; font-size: x-large; margin-top: 10px;"></i></a>
-        <i class="far fa-bell" style=" font-size: x-large;margin-left: 20%;"></i>
     </div>
 <script type="text/javascript" src = "{% static 'js/my.js' %}"></script>
 <script src="https://js.paystack.co/v1/inline.js"></script> 

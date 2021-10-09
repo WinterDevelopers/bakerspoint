@@ -12,7 +12,7 @@ body{
     margin-bottom: 13px;
     max-width: 95%;
     margin-left: 8px;
-    height: 265px;
+    height: 250px;
 }
 .button-border{
     color: #FFCB7D;
@@ -178,7 +178,6 @@ input[type=submit]{
     background-color:#FFCB7D;
     color: white;
     border-radius: 10px 0px 0px 0px;
-    width: 300px;
     text-align: center;
     padding-bottom: 3px;
     padding-top: 20px;
@@ -189,7 +188,6 @@ input[type=submit]{
     background-color:#f7e0bd;
     color: white;
     border-radius: 0px 0px 10px 0px;
-    width: 300px;
     text-align: center;
 }
 
@@ -357,8 +355,16 @@ div.vertical-scroll div {
     height: 350px; 
     width: 70%;
 }
+.others{
+    display: flex; 
+    flex-direction: row;
+    
+}
 
 @media screen and (max-width:600px){
+    .others{
+        flex-direction: column;
+    }
     .display-image{
         display: block; 
         margin-left: auto; 

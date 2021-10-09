@@ -18,7 +18,7 @@ from django.urls import path, include
 
 from django.conf.urls.static import static
 from django.conf import settings
-from ecommerce.views import base, index, productPage, cartPage, paymentPage, registerPage
+from ecommerce.views import base
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
