@@ -37,7 +37,7 @@ body{
     min-width: 30%;
     color: #FFCB7D;
 }
-.button-light{
+#button-light{
     background-color: #FFCB7D;
     margin-right: 30px;
     border-radius: 5px;
