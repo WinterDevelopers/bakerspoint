@@ -10,7 +10,7 @@ class Customer(models.Model):
     email = models.CharField(max_length=200, null=True)
 
     def __str__(self):
-        return self.name
+        return str(self.user)
 
 
 class Product(models.Model):
@@ -88,7 +88,7 @@ class OrderItem(models.Model):
 
 
 class ShippingAddress(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
+    customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True)
     order = models.ForeignKey(Order, on_delete=models.SET_NULL, null=True)
     address = models.CharField(max_length=200, null=True)
     city = models.CharField(max_length=200, null=True)
@@ -96,6 +96,10 @@ class ShippingAddress(models.Model):
     zipcode = models.CharField(max_length=200, null=True)
     country = models.CharField(max_length=200, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.country)
+
 
     
     
@@ -107,5 +111,5 @@ class CompletedTransaction(models.Model):
 
 
     def __str__(self):
-        return str(self.customer)
+        return self.tracking_id
 

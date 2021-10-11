@@ -14,7 +14,7 @@ urlpatterns = [
     path('update-item/', updateItem, name = 'update-item'),
     path('process-order/', processOrder, name = 'process-order'),
     path('notification/', notification, name = 'notification'),
-    path('notification_page/', notification_page, name = 'notification_page'),
+    path('transaction/', notification_page, name = 'notification_page'),
     path('<slug:id>/', productPage, name ='product-page' )
     
     

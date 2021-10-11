@@ -2,9 +2,17 @@
 {% load static %}
 {% block content %}
 
-    <h2>your notification</h2>
-
-    {{tracking_id}}
-    {{messages}}
+    <div class="" style="margin: 30%; margin-top: 50px;">
+    <h3> hello! {{customer}} we would send and email, if you don't receive the email within 12hrs
+        pls you can track your orders using the tracking id below
+    </h3>
+    <li>
+        {% for message in info%}
+        <ul>
+            {{message}}
+        </ul>
+        {% endfor %}
+    </li>
+    </div>
 
 {% endblock %}

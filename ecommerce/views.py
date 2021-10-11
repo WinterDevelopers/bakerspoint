@@ -292,7 +292,6 @@ def processOrder(request):
         total = float(data['form']['total'])
         order.transaction_id = transaction_id
 
-
         if total == order.get_cart_total:
             order.complete = True
             print('price was verified')
@@ -302,9 +301,9 @@ def processOrder(request):
 
         order.save()
         print('saved')
-
+    
         if order.shipping == True:
-            ShippingAddress.objects.create(
+            ShippingAddress.objects.update_or_create(
                 customer=customer,
                 order=order,
                 address = data['shipping']['address'],
@@ -316,7 +315,7 @@ def processOrder(request):
             print(customer)
         else:
             print('did\'nt save shipping details')
-    return JsonResponse('payment was sucssesful...', safe=False)
+        return JsonResponse('payment was sucssesful...', safe=False)
 
 def notification(request):
     current_customer = request.user.customer
@@ -335,14 +334,17 @@ def notification(request):
 def notification_page(request):
 
     if request.user.is_authenticated:
-        tracking_id  = CompletedTransaction.tracking_id
-        messages = CompletedTransaction.message
-
+        customer = request.user.customer
+        user = request.user
+        transaction = Customer.objects.get(user=user)
+        info = transaction.completedtransaction_set.all()
+        
+        print(info)
     else:
-        tracking_id = '**********'
-        messages = "your are not logged in"
+        customer = "your are not logged in"
+        info = 'no item yet'
 
     template_name="ecommerce/notification_page.html"
-    context = {"tracking_id":tracking_id, "messages":messages}
+    context = {'info':info, 'customer':customer}
 
     return render(request, template_name, context)
