@@ -2,17 +2,20 @@
 {% load static %}
 {% block content %}
 
-    <div class="" style="margin: 30%; margin-top: 50px;">
-    <h3> hello! {{customer}} we would send and email, if you don't receive the email within 12hrs
+    <div style="margin: 3%; margin-top: 50px;">
+    <h3> hello! {{customer}}</h3>
+       <p>
+        we would send and email, if you don't receive the email within 12hrs
         pls you can track your orders using the tracking id below
-    </h3>
-    <li>
+       </p>
+
+   
         {% for message in info%}
-        <ul>
-            {{message}}
-        </ul>
+            <div style="margin:5px; color: bisque; background-color: rgb(27, 32, 33); border-radius: 5px; padding: 10px; font-size: large; width: 90vw;">
+            <span style="color: white; margin-right: 10px;">{{message}}</span> email us this code to tarck your orders
+            </div>
         {% endfor %}
-    </li>
+  
     </div>
 
 {% endblock %}

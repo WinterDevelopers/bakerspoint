@@ -338,13 +338,31 @@ def notification_page(request):
         user = request.user
         transaction = Customer.objects.get(user=user)
         info = transaction.completedtransaction_set.all()
+        order, created = Order.objects.get_or_create(customer=customer, complete=False)
+        cartItem = order.get_cart_item
         
         print(info)
     else:
         customer = "your are not logged in"
         info = 'no item yet'
+        order = {'get_cart_total':0, 'get_cart_item':0}
+        cartItem = order['get_cart_item']
 
     template_name="ecommerce/notification_page.html"
-    context = {'info':info, 'customer':customer}
+    context = {'info':info, 'customer':customer, 'cartItem':cartItem}
 
     return render(request, template_name, context)
+
+
+
+    if request.user.is_authenticated:
+        user = request.user.email
+        customer = request.user.customer
+        
+        items = order.orderitem_set.all()
+        
+
+    else:
+        user = ''
+        items = []
+        
